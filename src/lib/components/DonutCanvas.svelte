@@ -30,7 +30,7 @@
 	});
 
 	function handleMousemove(event) {
-		console.log(event);
+		// if (sectors.length === 0) return;
 		// if canvas is not on the left top
 		// const rect = canvas.getBoundingClientRect();
 		// console.log(rect);
@@ -40,11 +40,11 @@
 		const dx = x - canvasCenter;
 		const dy = y - canvasCenter;
 
-		const teta = Math.atan2(dy, dx);
-		console.log(teta);
+		let theta = Math.atan2(dy, dx);
+		if (theta < 0) theta += Math.PI * 2;
 
 		const test = sectors[0];
-		if (test.start <= teta && test.end >= teta) console.log('intersecting first section');
+		if (test.start <= theta && test.end >= theta) console.log('intersecting first section');
 	}
 
 	function draw(obj) {
